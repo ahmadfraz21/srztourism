@@ -1,2 +1,0 @@
-# srztourism
-SRZ Tourism Website
