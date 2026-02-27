@@ -1684,9 +1684,9 @@ export default function App() {
                 <h2 style={{ fontFamily: "var(--serif)", fontSize: "1.65rem", fontWeight: 700, marginBottom: "0.5rem" }}>Contact Information</h2>
                 <p style={{ color: "var(--smoke)", fontSize: "0.88rem", marginBottom: "2rem", lineHeight: "1.65" }}>Reach us through any of the channels below. We respond within 24 hours.</p>
                 {[
-                  { icon: <IconPhone />, label: "Phone", val: "+1 (555) 012-3456" },
-                  { icon: <IconMail />, label: "Email", val: "hello@srztourism.com" },
-                  { icon: <IconPin />, label: "Office", val: "123 Explorer Way, San Francisco, CA 94102" },
+                  { icon: <IconPhone />, label: "Phone", val: "+923012432222" },
+                  { icon: <IconMail />, label: "Email", val: "ahmadfraz009@gmail.com" },
+                  { icon: <IconPin />, label: "Office", val: "G10 Markaz, Islamabad" },
                 ].map(item => (
                   <div key={item.label} className="contact-info-item">
                     <div className="contact-icon">{item.icon}</div>
