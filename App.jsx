@@ -1745,14 +1745,14 @@ export default function App() {
                       </div>
                       <div className="form-group" style={{ marginBottom: 0 }}>
                         <label className="form-label">Email *</label>
-                        <input className="form-input" type="email" placeholder="hello@email.com" required
+                        <input className="form-input" type="email" placeholder="ahmadfraz009@gmail.com" required
                           value={contactForm.email} onChange={e => setContactForm(f => ({ ...f, email: e.target.value }))} />
                       </div>
                     </div>
                     <div className="form-row">
                       <div className="form-group" style={{ marginBottom: 0 }}>
                         <label className="form-label">Phone</label>
-                        <input className="form-input" type="tel" placeholder="+1 555 000 0000"
+                        <input className="form-input" type="tel" placeholder="+92 301 243 2222"
                           value={contactForm.phone} onChange={e => setContactForm(f => ({ ...f, phone: e.target.value }))} />
                       </div>
                       <div className="form-group" style={{ marginBottom: 0 }}>
