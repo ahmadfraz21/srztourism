@@ -1698,8 +1698,8 @@ export default function App() {
                 <h2 style={{ fontFamily: "var(--serif)", fontSize: "1.65rem", fontWeight: 700, marginBottom: "0.5rem" }}>Contact Information</h2>
                 <p style={{ color: "var(--smoke)", fontSize: "0.88rem", marginBottom: "2rem", lineHeight: "1.65" }}>Reach us through any of the channels below. We respond within 24 hours.</p>
                 {[
-                  { icon: <IconPhone />, label: "Phone", val: "+92 51 234 5678" },
-                  { icon: <IconMail />, label: "Email", val: "hello@srztourism.com.pk" },
+                  { icon: <IconPhone />, label: "Phone", val: "+92 301 243 2222" },
+                  { icon: <IconMail />, label: "Email", val: "ahmadfraz009@gmail.com" },
                   { icon: <IconPin />, label: "Office", val: "Office 12, Jinnah Super Market, F-7/2, Islamabad" },
                 ].map(item => (
                   <div key={item.label} className="contact-info-item">
