@@ -1,12 +1,45 @@
 const WEBHOOK_URL = 'https://n8n.srv1035178.hstgr.cloud/webhook/website_tracking';
 
 async function collectData(trigger: string, extra?: Record<string, unknown>) {
-  // IP + Geo
+  // IP + Geo — tries multiple providers with fallback
   let ipData: Record<string, unknown> = {};
-  try {
-    const res = await fetch('https://ipapi.co/json/');
-    ipData = await res.json();
-  } catch { /* silent */ }
+  const ipProviders = [
+    async () => {
+      const r = await fetch('https://ipwho.is/');
+      const d = await r.json();
+      if (!d.success && d.success !== undefined) throw new Error('failed');
+      return {
+        ip: d.ip, city: d.city, region: d.region,
+        country_name: d.country, country_code: d.country_code,
+        postal: d.postal, latitude: d.latitude, longitude: d.longitude,
+        org: d.connection?.org, timezone: d.timezone?.id,
+      };
+    },
+    async () => {
+      const r = await fetch('https://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,query');
+      const d = await r.json();
+      if (d.status === 'fail') throw new Error(d.message);
+      return {
+        ip: d.query, city: d.city, region: d.regionName,
+        country_name: d.country, country_code: d.countryCode,
+        postal: d.zip, latitude: d.lat, longitude: d.lon,
+        org: d.isp, timezone: d.timezone,
+      };
+    },
+    async () => {
+      const r = await fetch('https://freeipapi.com/api/json');
+      const d = await r.json();
+      return {
+        ip: d.ipAddress, city: d.cityName, region: d.regionName,
+        country_name: d.countryName, country_code: d.countryCode,
+        postal: d.zipCode, latitude: d.latitude, longitude: d.longitude,
+        org: '', timezone: d.timeZone,
+      };
+    },
+  ];
+  for (const provider of ipProviders) {
+    try { ipData = await provider(); break; } catch { /* try next */ }
+  }
 
   const ua = navigator.userAgent;
 
